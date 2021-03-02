@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-window.alert("This is an alert! Javascript is running");
-=======
 var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -16,6 +13,26 @@ playerInfo = {
     this.health = 100;
     this.money = 100;
     this.attack = 10;
+  },
+  refillHealth: function() {
+    if (this.money >=7) {
+      window.alert("Refilling a player's health by 20 for 7 coins.");
+      this.health +=20;
+      this.money -= 7;
+    }
+    else {
+      window.alert("You don't have enoug money!");
+    }
+  },
+  upgradeAttack: function() {
+    if (this.money >=7) {
+      window.alert("Upgrading player's attack by 6 for 7 coins.");
+      this.attack += 6;
+      this.money -= 7;
+    }
+    else {
+      window.alert("You don't have enough money!");
+    }
   }
 };
 
@@ -76,29 +93,11 @@ var shop = function() {
     switch (shopOptionPrompt) {
         case "REFILL": // new case
         case "refill":
-          if (playerInfo.money >= 7) {
-            window.alert("Refilling player's health by 20 for 7 dollars.");
-      
-            playerInfo.health = playerInfo.health + 20;
-            playerInfo.money = playerInfo.money - 7;
-          }
-          else {
-            window.alert("You don't have enough money!");
-          }
-      
+          playerInfo.refillHealth();
           break;
         case "UPGRADE": // new case
         case "upgrade":
-          if (playerInfo.money >= 7) {
-            window.alert("Upgrading player's attack by 6 for 7 dollars.");
-      
-            playerInfo.attack = playerInfo.attack + 6;
-            playerInfo.money = playerInfo.money - 7;
-          }
-          else {
-            window.alert("You don't have enough money!");
-          }
-      
+          playerInfo.upgradeAttack();
           break;
         case "LEAVE": // new case
         case "leave":
@@ -186,4 +185,3 @@ var fight = function(enemy) {
 
 
 startGame();
->>>>>>> develop
