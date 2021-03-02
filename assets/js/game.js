@@ -167,10 +167,15 @@ var fightOrSkip = function() {
 
 
 var fight = function(enemy) {
+  var isPlayerTurn = true;
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
     // repeat and execute as long as the enemy-robot is alive
     while(enemy.health > 0 && playerInfo.health > 0) {
         // alert players that they are starting the round
        // if player picks "skip" confirm and then stop the loop
+      if (isPlayerTurn) {
        if (fightOrSkip()) {
        break;
     }
@@ -202,6 +207,8 @@ var fight = function(enemy) {
     } else {
       window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
     }
+  }
+  isPlayerTurn = !isPlayerTurn;
 
   }
 };
